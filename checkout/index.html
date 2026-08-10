@@ -297,6 +297,36 @@
             </div>
         </div>
 
+        
+        <h3 style="margin-bottom: 15px;">🌟 Pay with Solana (SOL)</h3>
+
+        <div class="qr-section">
+            <h3 style="color: #333;">Send SOL to this address</h3>
+            
+            <div class="amount-display">
+                Send equivalent of: <strong id="sol-amount">0.05 SOL</strong>
+                <br>
+                <small style="color: #666;">(Equivalent to $5 USD - rate changes)</small>
+            </div>
+            
+            <p>Send to this Solana address:</p>
+            <div class="wallet-address" id="sol-address">
+                8ekyBdfPo9sqdT8YFEmXzwzVdhvhRhAgSo75GpgJswQ3
+            </div>
+            
+            <button class="copy-btn" onclick="copySol()">📋 Copy SOL Address</button>
+            
+            <div class="warning">
+                ⚠️ <strong>Important:</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Send only on <strong>Solana network</strong></li>
+                    <li>Network fee: ~0.000005 SOL (extremely low!)</li>
+                    <li>Confirmation: 1-30 seconds (very fast)</li>
+                    <li>You can also send USDC on Solana</li>
+                </ul>
+            </div>
+        </div>
+
         <div class="instructions">
             <h3>📱 After Payment</h3>
             <ol>
@@ -405,6 +435,18 @@
             const product = PRODUCTS[this.value];
             const bnbApprox = (product.price / 600).toFixed(4);
             document.getElementById('bnb-amount').textContent = bnbApprox + ' BNB';
+        });
+
+        function copySol() {
+            const address = document.getElementById('sol-address').innerText.trim();
+            navigator.clipboard.writeText(address);
+            alert('✅ SOL Address copied!\n\n' + address + '\n\nSend SOL or SPL tokens to this address.');
+        }
+
+        document.getElementById('product-select').addEventListener('change', function() {
+            const product = PRODUCTS[this.value];
+            const solApprox = (product.price / 100).toFixed(3);
+            document.getElementById('sol-amount').textContent = solApprox + ' SOL';
         });
     </script>
 </body>
