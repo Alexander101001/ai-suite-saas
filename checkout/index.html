@@ -266,6 +266,37 @@
             </div>
         </div>
 
+        
+        <h3 style="margin-bottom: 15px;">🟡 Pay with BNB (BEP20)</h3>
+
+        <div class="qr-section">
+            <h3 style="color: #333;">Send BNB to this address</h3>
+            
+            <div class="amount-display">
+                Send equivalent of: <strong id="bnb-amount">0.008 BNB</strong>
+                <br>
+                <small style="color: #666;">(Equivalent to $5 USD - rate changes)</small>
+            </div>
+            
+            <p>Send to this BNB address (same as ETH):</p>
+            <div class="wallet-address" id="bnb-address">
+                0xc41abf8f3cae240dc1f7de1c1c1370d52dc79adc
+            </div>
+            
+            <button class="copy-btn" onclick="copyBnb()">📋 Copy BNB Address</button>
+            
+            <div class="warning">
+                ⚠️ <strong>Important:</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Send only on <strong>BNB Smart Chain (BEP20)</strong></li>
+                    <li>This is the SAME address as ETH (EVM-compatible)</li>
+                    <li>Network fee: ~0.01 USD (very cheap!)</li>
+                    <li>Confirmation: 5-15 seconds</li>
+                    <li>You can also send tokens on BSC</li>
+                </ul>
+            </div>
+        </div>
+
         <div class="instructions">
             <h3>📱 After Payment</h3>
             <ol>
@@ -362,6 +393,18 @@
             const product = PRODUCTS[this.value];
             const ethApprox = (product.price / 2500).toFixed(4);
             document.getElementById('eth-amount').textContent = ethApprox + ' ETH';
+        });
+
+        function copyBnb() {
+            const address = document.getElementById('bnb-address').innerText.trim();
+            navigator.clipboard.writeText(address);
+            alert('✅ BNB Address copied!\n\n' + address + '\n\nSend BNB or BEP20 tokens to this address.');
+        }
+
+        document.getElementById('product-select').addEventListener('change', function() {
+            const product = PRODUCTS[this.value];
+            const bnbApprox = (product.price / 600).toFixed(4);
+            document.getElementById('bnb-amount').textContent = bnbApprox + ' BNB';
         });
     </script>
 </body>
