@@ -236,6 +236,36 @@
             </div>
         </div>
 
+        
+        <h3 style="margin-bottom: 15px;">💎 Pay with Ethereum (ETH)</h3>
+
+        <div class="qr-section">
+            <h3 style="color: #333;">Send ETH to this address</h3>
+            
+            <div class="amount-display">
+                Send equivalent of: <strong id="eth-amount">0.002 ETH</strong>
+                <br>
+                <small style="color: #666;">(Equivalent to $5 USD - rate changes)</small>
+            </div>
+            
+            <p>Send to this Ethereum address:</p>
+            <div class="wallet-address" id="eth-address">
+                0xc41abf8f3cae240dc1f7de1c1c1370d52dc79adc
+            </div>
+            
+            <button class="copy-btn" onclick="copyEth()">📋 Copy ETH Address</button>
+            
+            <div class="warning">
+                ⚠️ <strong>Important:</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Send only on <strong>Ethereum Mainnet (ERC20)</strong></li>
+                    <li>Network fee (gas): ~1-5 USD</li>
+                    <li>Confirmation: 1-5 minutes</li>
+                    <li>You can also send USDC/USDT on ERC20</li>
+                </ul>
+            </div>
+        </div>
+
         <div class="instructions">
             <h3>📱 After Payment</h3>
             <ol>
@@ -321,6 +351,18 @@
             navigator.clipboard.writeText(address);
             alert('✅ BTC Address copied!\n\n' + address);
         }
+
+        function copyEth() {
+            const address = document.getElementById('eth-address').innerText.trim();
+            navigator.clipboard.writeText(address);
+            alert('✅ ETH Address copied!\n\n' + address + '\n\nSend ETH or ERC20 tokens to this address.');
+        }
+
+        document.getElementById('product-select').addEventListener('change', function() {
+            const product = PRODUCTS[this.value];
+            const ethApprox = (product.price / 2500).toFixed(4);
+            document.getElementById('eth-amount').textContent = ethApprox + ' ETH';
+        });
     </script>
 </body>
 </html>
