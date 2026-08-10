@@ -336,9 +336,30 @@
 
         <!-- BTC Section -->
         <div class="qr-section" id="btc-section">
-            <h3 style="color: #333;">Pay with Bitcoin</h3>
-            <p>Contact us for BTC wallet address</p>
-            <p>Telegram: @my_sovereign_market_bot</p>
+            <h3 style="color: #333;">Pay with Bitcoin (BTC)</h3>
+            
+            <div class="amount-display">
+                Send approximately: <strong id="btc-amount">0.0001 BTC</strong>
+                <br>
+                <small style="color: #666;">(Equivalent to $5 USD - rate changes)</small>
+            </div>
+            
+            <p>Send to this Bitcoin address:</p>
+            <div class="wallet-address" id="btc-address">
+                bc1pgll2ckk7zwemtputh49rncnh77tav8dstxv2rvwzwp96ap5uyzpsnfppqp
+            </div>
+            
+            <button class="copy-btn" onclick="copyBtcAddress()">📋 Copy BTC Address</button>
+            
+            <div class="warning">
+                ⚠️ <strong>Important:</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Send only on <strong>Bitcoin network</strong></li>
+                    <li>Network fee: ~1-5 USD</li>
+                    <li>Confirmation time: 10-60 minutes</li>
+                    <li>Amount may vary with BTC price</li>
+                </ul>
+            </div>
         </div>
 
         <!-- Binance Pay Section -->
@@ -453,6 +474,12 @@
             const address = document.getElementById('usdg-address').innerText.trim();
             navigator.clipboard.writeText(address);
             alert('✅ USDG Address copied!\n\n' + address + '\n\nSend USDG tokens on TRC20 network.');
+        }
+
+        function copyBtcAddress() {
+            const address = document.getElementById('btc-address').innerText.trim();
+            navigator.clipboard.writeText(address);
+            alert('✅ BTC Address copied!\n\n' + address + '\n\nSend Bitcoin to this address. Amount may vary.');
         }
     </script>
 </body>
