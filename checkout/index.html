@@ -195,6 +195,12 @@
             <div class="method-title">💎 Ethereum (ETH) - ERC20</div>
             <div class="method-fee">0% fees • Network fee only</div>
         </div>
+        <!-- TRON Payment -->
+        <div class="payment-method" onclick="selectPayment('tron')">
+            <div class="method-title">🔺 Tron (TRX) - TRC20</div>
+            <div class="method-fee">0% fees • Very fast • Low fees</div>
+        </div>
+
 
 
         <!-- BTC Payment -->
@@ -266,6 +272,32 @@
                     <li>Send only on <strong>ERC20 network</strong> (Ethereum mainnet)</li>
                     <li>Wrong network = lost funds</li>
                     <li>Gas fees will apply (~1-5 USD)</li>
+                </ul>
+            </div>
+        </div>
+
+        
+        <!-- TRON Section -->
+        <div class="qr-section" id="tron-section">
+            <h3 style="color: #333;">Pay with Tron (TRX)</h3>
+            
+            <div class="amount-display">
+                Send equivalent of: <strong id="tron-amount">5.00 USD in TRX</strong>
+            </div>
+            
+            <p>Send to this Tron address:</p>
+            <div class="wallet-address" id="tron-address">
+                TLGmFfAEvme5TQo76wehqFg8jkePujR5Fa
+            </div>
+            
+            <button class="copy-btn" onclick="copyTronAddress()">📋 Copy TRON Address</button>
+            
+            <div class="warning">
+                ⚠️ <strong>Important:</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Send only on <strong>Tron network (TRC20)</strong></li>
+                    <li>Wrong network = lost funds</li>
+                    <li>Tron has very low transaction fees</li>
                 </ul>
             </div>
         </div>
@@ -377,6 +409,12 @@
             const address = document.getElementById('eth-address').innerText.trim();
             navigator.clipboard.writeText(address);
             alert('✅ ETH Address copied!\n\n' + address + '\n\nSend ETH or ERC20 tokens to this address.');
+        }
+
+        function copyTronAddress() {
+            const address = document.getElementById('tron-address').innerText.trim();
+            navigator.clipboard.writeText(address);
+            alert('✅ TRON Address copied!\n\n' + address + '\n\nSend TRX or TRC20 tokens to this address.');
         }
     </script>
 </body>
